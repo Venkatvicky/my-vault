@@ -1,0 +1,4 @@
+apiVersion: v2
+name: vault-postgresql
+version: 1.0.0
+description:  A Helm chart for deploying Vault with PostgreSQL storage backend

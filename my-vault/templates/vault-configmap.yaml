@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vault-config
+  namespace: vault
+data:
+  vault.hcl: |
+    storage "postgresql" {
+      connection_url = "postgresql://{{ .Values.postgresql.postgresqlUsername }}:{{ .Values.postgresql.postgresqlPassword }}@{{ .Values.postgresql.postgresqlHost }}:{{ .Values.postgresql.postgresqlPort }}/{{ .Values.postgresql.postgresqlDatabase }}?sslmode=disable"
+    }
+    listener "tcp" {
+      address     = "0.0.0.0:8200"
+      tls_disable = 1
+    }
+    ui = true

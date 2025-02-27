@@ -1,0 +1,20 @@
+postgresql:
+  postgresqlUsername: vault
+  postgresqlPassword: vaultpassword
+  postgresqlDatabase: vault
+  postgresqlPort: 5432
+  postgresqlHost: postgres
+  storageSize: 5Gi
+
+vault:
+  server:
+    image:
+      repository: hashicorp/vault
+      tag: "1.10.0"
+    replicas: 1
+    storageSize: 5Gi
+  rootToken: root-token
+
+ingress:
+  enabled: true
+  host: vault.example.com
